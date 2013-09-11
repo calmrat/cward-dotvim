@@ -1,35 +1,42 @@
-"call pathogen#infect()
-"all pathogen#helptags()
+set nocompatible
+filetype off
+syntax on
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+execute pathogen#infect()
+
+" The bundles you install will be listed here
+" let Vundle manage Vundle required!
 Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'scrooloose/nerdtree'
 Bundle 'klen/python-mode'
 Bundle 'davidhalter/jedi-vim'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'ervandew/supertab'
 Bundle 'mileszs/ack.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'alfredodeza/pytest.vim'
-"Bundle 'msanders/snipmate.vim.git'
 
 filetype plugin indent on
-set nocompatible
-filetype off
 
-" Solarized
-syntax enable
-set background=dark
-colorscheme solarized
+" The rest of your config follows here
+" Nerdtree
+Bundle 'scrooloose/nerdtree'
+map <F2> :NERDTreeToggle<CR>
 
+" Powerline
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " Powerline setup
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
 set laststatus=2
 
-map <F2> :NERDTreeToggle<CR>
+" Solarized
+Bundle 'altercation/vim-colors-solarized'
+" syntax enable
+set t_Co=256
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
 
 " Python-mode
 " Activate rope
@@ -44,6 +51,8 @@ map <F2> :NERDTreeToggle<CR>
 " ]]            Jump on next class or function (normal, visual, operator modes)
 " [M            Jump on previous class or method (normal, visual, operator modes)
 " ]M            Jump on next class or method (normal, visual, operator modes)
+
+" Don't use rope, use jedi instead
 let g:pymode_rope = 0
 
 " Documentation
